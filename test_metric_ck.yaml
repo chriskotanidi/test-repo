@@ -1,0 +1,25 @@
+version: 1.1
+
+source: samples.tpch.orders
+
+dimensions:
+  - expr: source.*
+
+measures:
+  - name: count
+    expr: COUNT(*)
+    comment: "Represents the total number of rows in the dataset. Use this measure\
+      \ to count all orders in the orders table, optionally sliced by any dimension."
+    display_name: Count
+
+  - name: total_revenue_by_orders
+    expr: SUM(o_totalprice)
+    comment: Testing the average order sum
+    display_name: Total Revenue by orders
+    format:
+      type: currency
+      currency_code: USDI don
+      decimal_places:
+        type: all
+      hide_group_separator: false
+      abbreviation: none
